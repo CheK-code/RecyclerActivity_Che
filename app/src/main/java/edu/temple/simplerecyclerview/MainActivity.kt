@@ -9,12 +9,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO Step 1: Reference RecyclerView object
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val displayNumView = findViewByID<TextView>(R.id.numDisplay)
 
-        //TODO Step 2: Provide a LayoutManager
+        val numArray = Array(50){i + 1}
+
+        with (recyclerView){
+
+            adapter = NumberDisplayAdapter(this@MainActivity, numArray)
+
+            onItemSelectedListener = object : OnItemSelectedListener {
+                override fun onItemSelected(parent : RecyclerView<*>, view: View?, position: Int, id: Long) {
+                    parent?.run {
+                        RecyclerView.textSize = getItemAtPosition(position).toString().toFloat()
+                    }
+                }
+
+                override fun
+            }
+        }
+
+
+        override fun LayoutManager(parent: RecyclerView)
 
 
         //TODO Step 4: Provide a RecyclerView.Adapter
+        numArray(RecyclerView.Adapter<Int>: numArray)
     }
 }
